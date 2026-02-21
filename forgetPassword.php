@@ -3,7 +3,7 @@
 
 
 <div class="card-body px-5 py-5" style="background-color:darkgray;">
-    <h3 class="card-title text-left mb-3">Login</h3>
+    <h3 class="card-title text-left mb-3">Forget Password</h3>
     <?php
     if (isset($_SESSION['errors'])) {
         foreach ($_SESSION['errors'] as $error) {
@@ -12,30 +12,19 @@
         unset($_SESSION['errors']);
     }
 
-    if(isset($_SESSION['success'])) {
+    if (isset($_SESSION['success'])) {
         echo "<div class='alert alert-success'>" . $_SESSION['success'] . "</div>";
         unset($_SESSION['success']);
     }
     ?>
-    <form action="handlers/login.php" method="post">
+    <form action="handlers/forgetPassword.php" method="post">
         <div class="form-group">
             <label>email *</label>
             <input type="email" class="form-control p_input" name="email" <?php if (isset($_SESSION['old']['email'])) echo "value=" . $_SESSION['old']['email'];
                                                                             unset($_SESSION['old']['email']); ?>>
         </div>
-        <div class="form-group">
-            <label>Password *</label>
-            <input type="text" class="form-control p_input" name="password">
-        </div>
-        <div class="form-group d-flex align-items-center justify-content-between">
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" name="remember"> Remember me </label>
-            </div>
-            <a href="forgetPassword.php" class="forgot-pass">Forgot password</a>
-        </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-primary btn-block enter-btn" name="login">Login</button>
+            <button type="submit" class="btn btn-primary btn-block enter-btn" name="send_otp">Send OTP</button>
         </div>
         <div class="d-flex">
             <button class="btn btn-facebook me-2 col">

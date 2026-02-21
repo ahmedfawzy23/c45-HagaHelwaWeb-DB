@@ -3,7 +3,7 @@
 
 
 <div class="card-body px-5 py-5" style="background-color:darkgray;">
-    <h3 class="card-title text-left mb-3">Login</h3>
+    <h3 class="card-title text-left mb-3">Reset Password</h3>
     <?php
     if (isset($_SESSION['errors'])) {
         foreach ($_SESSION['errors'] as $error) {
@@ -12,30 +12,24 @@
         unset($_SESSION['errors']);
     }
 
-    if(isset($_SESSION['success'])) {
+    if (isset($_SESSION['success'])) {
         echo "<div class='alert alert-success'>" . $_SESSION['success'] . "</div>";
         unset($_SESSION['success']);
     }
     ?>
-    <form action="handlers/login.php" method="post">
+    <form action="handlers/resetPassword.php" method="post">
         <div class="form-group">
-            <label>email *</label>
-            <input type="email" class="form-control p_input" name="email" <?php if (isset($_SESSION['old']['email'])) echo "value=" . $_SESSION['old']['email'];
-                                                                            unset($_SESSION['old']['email']); ?>>
+            <label>password *</label>
+            <input type="password" class="form-control p_input" name="password" <?php if (isset($_SESSION['old']['password'])) echo "value=" . $_SESSION['old']['password'];
+                                                                                unset($_SESSION['old']['password']); ?>>
         </div>
         <div class="form-group">
-            <label>Password *</label>
-            <input type="text" class="form-control p_input" name="password">
-        </div>
-        <div class="form-group d-flex align-items-center justify-content-between">
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" name="remember"> Remember me </label>
-            </div>
-            <a href="forgetPassword.php" class="forgot-pass">Forgot password</a>
+            <label>confirm password *</label>
+            <input type="password" class="form-control p_input" name="confirm_password" <?php if (isset($_SESSION['old']['confirm_password'])) echo "value=" . $_SESSION['old']['confirm_password'];
+                                                                                        unset($_SESSION['old']['confirm_password']); ?>>
         </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-primary btn-block enter-btn" name="login">Login</button>
+            <button type="submit" class="btn btn-primary btn-block enter-btn" name="reset_password">Reset Password</button>
         </div>
         <div class="d-flex">
             <button class="btn btn-facebook me-2 col">

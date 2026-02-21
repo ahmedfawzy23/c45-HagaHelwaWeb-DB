@@ -61,6 +61,11 @@ function validate($data, $rules)
                         $errors[$field] = ucfirst($field) . ' does not exist';
                     }
                     break;
+                case "confirmed":
+                    if ($data[$field] != $data['confirm_' . $field] && empty($errors['confirm_' . $field])) {
+                        $errors['confirm_' . $field] = ucfirst($field) . ' does not match';
+                    }
+                    break;
             }
         }
     }
